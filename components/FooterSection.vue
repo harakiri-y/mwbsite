@@ -49,7 +49,7 @@
             <li><NuxtLink to="/privacy" class="text-white/50 hover:text-white transition-colors duration-300 hover-underline">Privacy Policy</NuxtLink></li>
             <li><NuxtLink to="/imprint" class="text-white/50 hover:text-white transition-colors duration-300 hover-underline">Imprint</NuxtLink></li>
             <li><NuxtLink to="/terms" class="text-white/50 hover:text-white transition-colors duration-300 hover-underline">Terms of Service</NuxtLink></li>
-            <li><a href="https://apps.apple.com/app/metea" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-white transition-colors duration-300 hover-underline">Support</a></li>
+            <li><NuxtLink to="/support" class="text-white/50 hover:text-white transition-colors duration-300 hover-underline">Support</NuxtLink></li>
           </ul>
         </div>
       </div>
