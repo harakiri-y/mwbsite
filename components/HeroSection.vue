@@ -56,53 +56,12 @@
           <div class="relative float">
             <!-- Phone Frame -->
             <div class="phone-mockup w-[280px] sm:w-[320px]">
-              <div class="phone-screen aspect-[9/19.5]">
-                <!-- Phone Notch -->
-                <div class="phone-notch" />
-
-                <!-- App Content - Like MindfulAI -->
-                <div class="p-4 w-full h-full flex flex-col pt-10 bg-gradient-to-b from-cream to-light">
-                  <!-- Mindful Briefing Card with Orb -->
-                  <div class="card p-4 mb-4 relative overflow-hidden">
-                    <!-- Orb Glow Background -->
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/4">
-                      <div class="orb-sm opacity-70"></div>
-                    </div>
-
-                    <!-- Card Header -->
-                    <div class="relative flex items-center justify-between mb-8 pt-8">
-                      <span class="text-[10px] font-medium tracking-wider text-dark-muted">MINDFUL BRIEFING</span>
-                      <span class="text-[10px] px-2 py-0.5 bg-primary/10 text-primary rounded-full font-medium">AI</span>
-                    </div>
-                  </div>
-
-                  <!-- Bio-Resonance Section -->
-                  <div class="text-center mb-3">
-                    <span class="text-[10px] tracking-wider text-dark-muted">BIO-RESONANCE</span>
-                    <p class="text-sm font-semibold text-dark" style="font-family: var(--font-display);">Live Feedback</p>
-                  </div>
-
-                  <!-- Health Stats -->
-                  <div class="grid grid-cols-2 gap-2 flex-1">
-                    <div class="card p-3 bg-gradient-to-br from-amber-50 to-orange-50 border-amber-100">
-                      <span class="text-[9px] tracking-wider text-dark-muted block mb-1">STRESS</span>
-                      <div class="flex items-baseline gap-1">
-                        <span class="text-xl font-bold text-dark" style="font-family: var(--font-display);">29</span>
-                        <span class="text-[10px] text-dark-muted">/100</span>
-                      </div>
-                      <span class="text-[9px] text-amber-600 font-medium">Low</span>
-                    </div>
-
-                    <div class="card p-3 bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-100">
-                      <span class="text-[9px] tracking-wider text-dark-muted block mb-1">HEART RATE</span>
-                      <div class="flex items-baseline gap-1">
-                        <span class="text-xl font-bold text-dark" style="font-family: var(--font-display);">72</span>
-                        <span class="text-[10px] text-dark-muted">BPM</span>
-                      </div>
-                      <span class="text-[9px] text-primary font-medium">Resting</span>
-                    </div>
-                  </div>
-                </div>
+              <div class="phone-screen aspect-[9/19.5] overflow-hidden">
+                <img
+                  src="/screenshot-1.png"
+                  alt="Metea App Screenshot"
+                  class="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
           </div>
