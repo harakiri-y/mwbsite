@@ -102,10 +102,10 @@ const highlights = [
 ]
 
 const screenshots = [
-  { title: 'Dashboard', image: '/screenshot-2.png' },
-  { title: 'AI Insights', image: '/screenshot-3.png' },
-  { title: 'Notifications', image: '/screenshot-2.png' },
-  { title: 'Privacy', image: '/screenshot-1.png' }
+  { title: 'Dashboard', image: '/screenshot-2.jpg' },
+  { title: 'AI Insights', image: '/screenshot-3.jpg' },
+  { title: 'Notifications', image: '/screenshot-2.jpg' },
+  { title: 'Privacy', image: '/screenshot-1.jpg' }
 ]
 
 </script>

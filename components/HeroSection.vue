@@ -58,7 +58,7 @@
             <div class="phone-mockup w-[280px] sm:w-[320px]">
               <div class="phone-screen aspect-[9/19.5] overflow-hidden">
                 <img
-                  src="/screenshot-1.png"
+                  src="/screenshot-1.jpg"
                   alt="Metea App Screenshot"
                   class="w-full h-full object-cover object-top"
                 />
