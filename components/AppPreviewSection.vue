@@ -64,7 +64,6 @@
                     class="w-full h-full object-cover object-top"
                   />
                 </Transition>
-                </div>
               </div>
             </div>
           </div>

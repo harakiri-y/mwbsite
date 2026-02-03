@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A7F5A"/>
+      <stop offset="100%" style="stop-color:#156B4A"/>
+    </linearGradient>
+  </defs>
+  <!-- Heart shape -->
+  <path fill="url(#grad)" d="M50 88C25 70 10 55 10 38C10 22 22 12 36 12C44 12 50 18 50 18C50 18 56 12 64 12C78 12 90 22 90 38C90 55 75 70 50 88Z"/>
+  <!-- Face profile curve (simplified) -->
+  <path fill="#fafafa" opacity="0.9" d="M48 30C48 30 45 35 45 42C45 49 48 55 50 60C52 65 50 72 50 72C52 72 55 65 55 58C55 51 52 44 52 38C52 32 50 30 48 30Z"/>
+</svg>

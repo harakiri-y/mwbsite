@@ -1,0 +1,12 @@
+# Robots.txt for Metea Website
+# https://metea-app.com
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private paths (if any)
+Disallow: /api/
+Disallow: /_nuxt/
+
+# Sitemap
+Sitemap: https://metea-app.com/sitemap.xml
