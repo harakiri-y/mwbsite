@@ -30,9 +30,8 @@
                 <p class="text-dark-muted leading-relaxed mb-6">
                   The best way to reach us is through the App Store. You can contact our support team, report issues, or provide feedback directly.
                 </p>
-                <!-- Placeholder App Store Link -->
                 <a
-                  href="https://apps.apple.com/app/metea/id000000000"
+                  href="https://apps.apple.com/app/metea/id6756438562"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="btn-primary inline-flex"
@@ -42,9 +41,6 @@
                   </svg>
                   <span>View on App Store</span>
                 </a>
-                <p class="text-sm text-dark-muted mt-3">
-                  <em>Note: The app will be available on the App Store soon.</em>
-                </p>
               </div>
             </div>
           </section>
@@ -99,7 +95,7 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://apps.apple.com/app/metea/id000000000"
+                href="https://apps.apple.com/app/metea/id6756438562"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-secondary inline-flex justify-center"
@@ -110,7 +106,7 @@
                 </svg>
               </a>
               <a
-                href="https://apps.apple.com/app/metea/id000000000"
+                href="https://apps.apple.com/app/metea/id6756438562"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-secondary inline-flex justify-center"

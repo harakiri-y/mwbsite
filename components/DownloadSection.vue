@@ -25,7 +25,9 @@
       <!-- Download Button -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 reveal">
         <a
-          href="#"
+          href="https://apps.apple.com/app/metea/id6756438562"
+          target="_blank"
+          rel="noopener noreferrer"
           class="inline-flex items-center justify-center px-8 py-4 bg-dark text-white rounded-2xl hover:bg-dark-secondary transition-all duration-500 hover:scale-105"
         >
           <svg class="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
