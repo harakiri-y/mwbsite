@@ -60,8 +60,8 @@
           <div class="phone-mockup w-[260px] sm:w-[280px] glow-green">
             <div class="phone-screen aspect-[9/19.5] overflow-hidden">
               <img
-                src="/screenshot-1.jpg"
-                alt="Metea App"
+                src="/screenshot-2.jpg"
+                alt="Metea App Activity Dashboard"
                 class="w-full h-full object-cover object-top"
               />
             </div>
