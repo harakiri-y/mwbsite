@@ -55,13 +55,17 @@
           </div>
         </div>
 
-        <!-- Screenshot -->
+        <!-- Phone Mockup -->
         <div class="download-anim flex justify-center lg:justify-end">
-          <img
-            src="/screenshots/image1.jpg"
-            alt="Metea - Your Personal Health Agents"
-            class="w-full max-w-[340px] rounded-3xl shadow-2xl shadow-dark/15"
-          />
+          <div class="phone-mockup w-[260px] sm:w-[280px] glow-green">
+            <div class="phone-screen aspect-[9/19.5] overflow-hidden">
+              <img
+                src="/screenshot-1.jpg"
+                alt="Metea App"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

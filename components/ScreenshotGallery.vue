@@ -59,9 +59,9 @@ const row1Base = [
 const row2Base = [
   { src: '/screenshots/image4.jpg', alt: 'Training Readiness' },
   { src: '/screenshots/image7.jpg', alt: 'Nutrition' },
-  { src: '/screenshots/image1.jpg', alt: 'Health Agents' },
   { src: '/screenshots/image8.jpg', alt: 'Nutrients' },
-  { src: '/screenshots/image2.jpg', alt: 'Dashboard' },
+  { src: '/screenshots/image5.jpg', alt: 'Healthspan' },
+  { src: '/screenshots/image9.jpg', alt: 'Apple Watch' },
 ]
 
 // Duplicate for seamless loop
