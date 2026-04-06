@@ -5,6 +5,7 @@
     <FeaturesSection />
     <HowItWorksSection />
     <AppPreviewSection />
+    <ScreenshotGallery />
     <StatsSection />
     <DownloadSection />
     <FooterSection />
@@ -13,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-// Initialize GSAP-powered animations
 useGsapAnimations()
 
 useHead({

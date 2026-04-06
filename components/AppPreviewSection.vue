@@ -1,155 +1,168 @@
 <template>
-  <section id="preview" class="relative py-28 lg:py-36 bg-light overflow-hidden">
-    <!-- Background -->
-    <div class="absolute inset-0 mesh-gradient pointer-events-none opacity-40" />
-
+  <section id="preview" class="relative py-28 lg:py-36 bg-cream overflow-hidden">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <!-- Content -->
-        <div class="order-2 lg:order-1">
-          <div class="section-header">
-            <span class="section-anim label text-primary mb-4 block">App Preview</span>
-            <h2 class="section-anim display-large text-dark mb-6">
-              Discover<br />
-              <span class="gradient-text">Metea</span>
-            </h2>
-            <p class="section-anim body-large mb-10">
-              A clear dashboard shows you all your important health data at a glance.
-            </p>
-          </div>
+      <!-- Section Header -->
+      <div class="section-header text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+        <span class="section-anim label text-primary mb-4 block">App Preview</span>
+        <h2 class="section-anim display-large text-dark mb-6">
+          Discover <span class="gradient-text">Metea</span>
+        </h2>
+        <p class="section-anim body-large max-w-xl mx-auto">
+          Explore the features that make Metea your most powerful health companion.
+        </p>
+      </div>
 
-          <!-- Feature Highlights -->
-          <div class="space-y-3">
-            <div
-              v-for="(highlight, index) in highlights"
-              :key="index"
-              class="feature-card group flex items-start gap-4 p-4 rounded-2xl transition-all duration-500 cursor-pointer"
-              :class="activeHighlight === index
-                ? 'bg-white border border-primary/20 shadow-sm shadow-primary/5'
-                : 'hover:bg-white/60 border border-transparent'"
-              @click="activeHighlight = index"
-            >
-              <div
-                class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500"
-                :class="activeHighlight === index ? 'bg-primary glow-green' : 'bg-gray-light'"
-              >
-                <component
-                  :is="highlight.icon"
-                  class="w-5 h-5 transition-colors duration-500"
-                  :class="activeHighlight === index ? 'text-white' : 'text-dark-muted'"
-                  :stroke-width="1.5"
+      <!-- Tab Navigation -->
+      <div class="gsap-reveal flex flex-wrap justify-center gap-2 mb-12 lg:mb-16">
+        <button
+          v-for="(tab, index) in tabs"
+          :key="index"
+          @click="activeTab = index"
+          class="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-500"
+          :class="activeTab === index
+            ? 'bg-dark text-white shadow-lg shadow-dark/20'
+            : 'bg-white text-dark-muted hover:text-dark border border-gray hover:border-dark/20'"
+        >
+          <component :is="tab.icon" class="w-4 h-4" :stroke-width="1.5" />
+          {{ tab.label }}
+        </button>
+      </div>
+
+      <!-- Screenshot Display -->
+      <div class="preview-phone flex justify-center">
+        <div class="relative max-w-[900px] w-full">
+          <Transition
+            enter-active-class="transition-all duration-600 ease-out"
+            enter-from-class="opacity-0 translate-y-8 scale-[0.97]"
+            enter-to-class="opacity-100 translate-y-0 scale-100"
+            leave-active-class="transition-all duration-300 ease-in absolute inset-0"
+            leave-from-class="opacity-100 scale-100"
+            leave-to-class="opacity-0 scale-[0.97]"
+            mode="out-in"
+          >
+            <div :key="activeTab" class="grid md:grid-cols-2 gap-8 items-center">
+              <!-- Screenshot -->
+              <div class="flex justify-center">
+                <img
+                  :src="tabs[activeTab].image"
+                  :alt="tabs[activeTab].label"
+                  class="w-full max-w-[340px] rounded-3xl shadow-2xl shadow-dark/15"
                 />
               </div>
-              <div>
-                <h4 class="font-semibold text-dark mb-0.5 text-[0.95rem]" style="font-family: var(--font-display);">
-                  {{ highlight.title }}
-                </h4>
-                <p class="text-sm text-dark-muted leading-relaxed">
-                  {{ highlight.description }}
+
+              <!-- Description -->
+              <div class="text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-5">
+                  <component :is="tabs[activeTab].icon" class="w-3.5 h-3.5" :stroke-width="2" />
+                  {{ tabs[activeTab].label }}
+                </div>
+                <h3 class="display-small text-dark mb-4">
+                  {{ tabs[activeTab].title }}
+                </h3>
+                <p class="text-dark-muted leading-relaxed mb-6">
+                  {{ tabs[activeTab].description }}
                 </p>
+                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                  <span
+                    v-for="tag in tabs[activeTab].tags"
+                    :key="tag"
+                    class="px-3 py-1 rounded-full bg-white border border-gray text-xs font-medium text-dark-muted"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          </Transition>
         </div>
+      </div>
 
-        <!-- Phone Preview with 3D Effect -->
-        <div class="order-1 lg:order-2 flex justify-center preview-phone" ref="previewContainer">
-          <div class="relative">
-            <div ref="previewPhoneRef" class="phone-mockup w-[260px] sm:w-[300px] glow-green-strong" style="will-change: transform;">
-              <div class="phone-screen aspect-[9/19.5] overflow-hidden relative">
-                <!-- Screenshots with transition -->
-                <Transition
-                  enter-active-class="transition-all duration-500 ease-out"
-                  enter-from-class="opacity-0 scale-105"
-                  enter-to-class="opacity-100 scale-100"
-                  leave-active-class="transition-all duration-300 ease-in"
-                  leave-from-class="opacity-100 scale-100"
-                  leave-to-class="opacity-0 scale-95"
-                  mode="out-in"
-                >
-                  <img
-                    :key="activeHighlight"
-                    :src="screenshots[activeHighlight].image"
-                    :alt="screenshots[activeHighlight].title"
-                    class="w-full h-full object-cover object-top"
-                  />
-                </Transition>
-              </div>
-            </div>
-
-            <!-- Screenshot indicator dots -->
-            <div class="flex justify-center gap-2 mt-6">
-              <button
-                v-for="(_, index) in screenshots"
-                :key="index"
-                @click="activeHighlight = index"
-                class="w-2 h-2 rounded-full transition-all duration-500"
-                :class="activeHighlight === index ? 'bg-primary w-6' : 'bg-gray hover:bg-dark-muted'"
-              />
-            </div>
-          </div>
-        </div>
+      <!-- Dot Indicators -->
+      <div class="flex justify-center gap-2 mt-10">
+        <button
+          v-for="(_, index) in tabs"
+          :key="index"
+          @click="activeTab = index"
+          class="w-2 h-2 rounded-full transition-all duration-500"
+          :class="activeTab === index ? 'bg-primary w-8' : 'bg-dark/15 hover:bg-dark/30'"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { BarChart3, Sparkles, Bell, Shield } from 'lucide-vue-next'
+import { Activity, Brain, Moon, Apple as AppleIcon, Watch, TrendingUp } from 'lucide-vue-next'
 
-const previewPhoneRef = ref<HTMLElement | null>(null)
-const activeHighlight = ref(0)
+const activeTab = ref(0)
 
-useTilt(previewPhoneRef, 5)
-
-// Auto-cycle through highlights
-let interval: ReturnType<typeof setInterval> | null = null
-
-onMounted(() => {
-  interval = setInterval(() => {
-    activeHighlight.value = (activeHighlight.value + 1) % highlights.length
-  }, 4000)
-})
-
-onUnmounted(() => {
-  if (interval) clearInterval(interval)
-})
-
-// Reset interval on manual click
-watch(activeHighlight, () => {
-  if (interval) clearInterval(interval)
-  interval = setInterval(() => {
-    activeHighlight.value = (activeHighlight.value + 1) % highlights.length
-  }, 4000)
-})
-
-const highlights = [
+const tabs = [
   {
-    icon: BarChart3,
-    title: 'Clear Dashboard',
-    description: 'All your health data at a glance - clearly structured and easy to understand.'
+    icon: Brain,
+    label: 'AI Dashboard',
+    title: 'Your Body\'s Signals — Decoded',
+    description: 'The AI dashboard gives you a complete overview of your health status. See stress levels, recovery score, heart rate, and personalized coaching tips — all in real-time.',
+    image: '/screenshots/image2.jpg',
+    tags: ['Stress Tracking', 'Recovery Score', 'AI Coaching']
   },
   {
-    icon: Sparkles,
-    title: 'AI-Powered Recommendations',
-    description: 'Personalized tips based on your individual data and goals.'
+    icon: Activity,
+    label: 'Training Readiness',
+    title: 'Know When To Push — Or Rest',
+    description: 'Metea Agents analyze your recovery and training readiness. Get data-driven recommendations on whether to train hard or take it easy today.',
+    image: '/screenshots/image4.jpg',
+    tags: ['Recovery Analysis', 'Training Load', 'Readiness Score']
   },
   {
-    icon: Bell,
-    title: 'Smart Notifications',
-    description: 'Receive the right reminders at the right time for your health.'
+    icon: Moon,
+    label: 'Sleep',
+    title: 'How Well Did You Sleep?',
+    description: 'Detailed sleep architecture analysis with phase tracking. Discover what affects your recovery and get personalized tips to improve sleep quality.',
+    image: '/screenshots/image6.jpg',
+    tags: ['Sleep Phases', 'Sleep Score', 'Recovery Tips']
   },
   {
-    icon: Shield,
-    title: 'Privacy First',
-    description: 'Your data stays on your device. No cloud, no compromises.'
+    icon: AppleIcon,
+    label: 'Nutrition',
+    title: 'Track Essential Nutrients',
+    description: 'Know what your body is missing. Track calories, macros, vitamins, minerals, and hydration with a beautiful and intuitive interface.',
+    image: '/screenshots/image8.jpg',
+    tags: ['Calories', 'Vitamins', 'Hydration']
+  },
+  {
+    icon: TrendingUp,
+    label: 'Healthspan',
+    title: 'How Fast Are You Aging?',
+    description: 'Your real health age — calculated from your data. Track your biological age and see how lifestyle changes impact your healthspan over time.',
+    image: '/screenshots/image5.jpg',
+    tags: ['Biological Age', 'Health Score', 'Longevity']
+  },
+  {
+    icon: Watch,
+    label: 'Apple Watch',
+    title: 'Health Insights Anywhere',
+    description: 'Your companion on Apple Watch. See stress, recovery, and sleep data directly on your wrist with beautiful complications and real-time tracking.',
+    image: '/screenshots/image9.jpg',
+    tags: ['Complications', 'Live Data', 'Night Vitals']
   }
 ]
 
-const screenshots = [
-  { title: 'Dashboard', image: '/screenshot-2.jpg' },
-  { title: 'AI Insights', image: '/screenshot-3.jpg' },
-  { title: 'Notifications', image: '/screenshot-2.jpg' },
-  { title: 'Privacy', image: '/screenshot-1.jpg' }
-]
+// Auto-cycle
+let interval: ReturnType<typeof setInterval> | null = null
+
+const startCycle = () => {
+  interval = setInterval(() => {
+    activeTab.value = (activeTab.value + 1) % tabs.length
+  }, 5000)
+}
+
+const resetCycle = () => {
+  if (interval) clearInterval(interval)
+  startCycle()
+}
+
+watch(activeTab, resetCycle)
+
+onMounted(startCycle)
+onUnmounted(() => { if (interval) clearInterval(interval) })
 </script>

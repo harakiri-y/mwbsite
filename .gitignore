@@ -14,8 +14,8 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Screenshots & large media
-Screenshots/
+# Source screenshots & large media
+/Screenshots/
 *.mov
 *.mp4
 

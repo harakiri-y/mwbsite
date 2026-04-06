@@ -1,53 +1,119 @@
 <template>
   <section id="features" class="relative py-28 lg:py-36 bg-light overflow-hidden">
-    <!-- Subtle Background -->
     <div class="absolute inset-0 mesh-gradient pointer-events-none opacity-50" />
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="section-header max-w-3xl mb-16 lg:mb-20">
+      <div class="section-header text-center max-w-3xl mx-auto mb-16 lg:mb-20">
         <span class="section-anim label text-primary mb-4 block">Features</span>
         <h2 class="section-anim display-large text-dark mb-6">
           Everything for your<br />
           <span class="gradient-text">Health</span>
         </h2>
-        <p class="section-anim body-large max-w-xl">
-          Metea combines cutting-edge AI technology with Apple Health for personalized insights.
+        <p class="section-anim body-large max-w-xl mx-auto">
+          AI-powered health agents that work for your wellbeing — 24/7.
         </p>
       </div>
 
-      <!-- Features Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div
-          v-for="(feature, index) in features"
-          :key="index"
-          class="feature-card group card cursor-pointer"
-        >
-          <!-- Icon -->
-          <div class="mb-5">
-            <div class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 bg-primary/8 group-hover:bg-primary group-hover:glow-green">
-              <component
-                :is="feature.icon"
-                class="w-6 h-6 transition-colors duration-500 text-primary group-hover:text-white"
-                :stroke-width="1.5"
+      <!-- Bento Grid with Screenshots -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Large Card - Dashboard -->
+        <div class="feature-card lg:col-span-2 group card overflow-hidden p-0 cursor-pointer">
+          <div class="grid md:grid-cols-2">
+            <div class="p-8 lg:p-10 flex flex-col justify-center">
+              <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-primary/8 group-hover:bg-primary transition-all duration-500 mb-5">
+                <Brain class="w-6 h-6 text-primary group-hover:text-white transition-colors duration-500" :stroke-width="1.5" />
+              </div>
+              <h3 class="text-xl font-semibold text-dark mb-3" style="font-family: var(--font-display);">
+                AI Health Agents
+              </h3>
+              <p class="text-dark-muted text-sm leading-relaxed mb-4">
+                Your body's signals — decoded. Get personalized AI coaching based on your real-time health data, from stress to recovery.
+              </p>
+              <span class="inline-flex items-center gap-1.5 text-primary text-sm font-medium opacity-0 translate-x-[-8px] transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+                Learn more
+                <ArrowRight class="w-4 h-4" />
+              </span>
+            </div>
+            <div class="relative h-64 md:h-auto overflow-hidden bg-cream">
+              <img
+                src="/screenshots/image4.jpg"
+                alt="Training Readiness"
+                class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
             </div>
           </div>
+        </div>
 
-          <!-- Content -->
-          <h3 class="text-lg font-semibold text-dark mb-2" style="font-family: var(--font-display);">
-            {{ feature.title }}
-          </h3>
-          <p class="text-dark-muted text-sm leading-relaxed">
-            {{ feature.description }}
-          </p>
+        <!-- Sleep Analysis -->
+        <div class="feature-card group card overflow-hidden p-0 cursor-pointer bg-[#1a1040]">
+          <div class="relative h-56 overflow-hidden">
+            <img
+              src="/screenshots/image6.jpg"
+              alt="Sleep Analysis"
+              class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <div class="p-6">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-indigo-500/20 mb-4">
+              <Moon class="w-5 h-5 text-indigo-400" :stroke-width="1.5" />
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2" style="font-family: var(--font-display);">
+              Sleep Analysis
+            </h3>
+            <p class="text-white/50 text-sm leading-relaxed">
+              Discover what affects your recovery with detailed sleep phase tracking.
+            </p>
+          </div>
+        </div>
 
-          <!-- Hover Arrow -->
-          <div class="mt-4 flex items-center gap-1.5 text-primary opacity-0 translate-x-[-8px] transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
-            <span class="text-sm font-medium">Learn more</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
+        <!-- Daily Health Plan -->
+        <div class="feature-card group card overflow-hidden p-0 cursor-pointer">
+          <div class="relative h-56 overflow-hidden bg-[#e8f0e8]">
+            <img
+              src="/screenshots/image3.jpg"
+              alt="Daily Health Plan"
+              class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <div class="p-6">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-primary/8 mb-4">
+              <Sparkles class="w-5 h-5 text-primary" :stroke-width="1.5" />
+            </div>
+            <h3 class="text-lg font-semibold text-dark mb-2" style="font-family: var(--font-display);">
+              Daily Health Plan
+            </h3>
+            <p class="text-dark-muted text-sm leading-relaxed">
+              Personalized actions based on your body data — updated every day.
+            </p>
+          </div>
+        </div>
+
+        <!-- Nutrition - Large Card -->
+        <div class="feature-card lg:col-span-2 group card overflow-hidden p-0 cursor-pointer">
+          <div class="grid md:grid-cols-2">
+            <div class="relative h-64 md:h-auto overflow-hidden bg-[#f0f5ee] order-2 md:order-1">
+              <img
+                src="/screenshots/image7.jpg"
+                alt="Vitamins & Nutrition"
+                class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+            <div class="p-8 lg:p-10 flex flex-col justify-center order-1 md:order-2">
+              <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-primary/8 group-hover:bg-primary transition-all duration-500 mb-5">
+                <Apple class="w-6 h-6 text-primary group-hover:text-white transition-colors duration-500" :stroke-width="1.5" />
+              </div>
+              <h3 class="text-xl font-semibold text-dark mb-3" style="font-family: var(--font-display);">
+                Nutrition Tracking
+              </h3>
+              <p class="text-dark-muted text-sm leading-relaxed mb-4">
+                Know what your body needs. Track vitamins, minerals, calories, and hydration — all in one place.
+              </p>
+              <span class="inline-flex items-center gap-1.5 text-primary text-sm font-medium opacity-0 translate-x-[-8px] transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+                Learn more
+                <ArrowRight class="w-4 h-4" />
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -57,62 +123,10 @@
 
 <script setup lang="ts">
 import {
-  Heart,
   Brain,
-  Users,
-  Watch,
-  LayoutGrid,
-  Activity,
   Moon,
-  Zap,
-  TrendingUp
+  Sparkles,
+  Apple,
+  ArrowRight
 } from 'lucide-vue-next'
-
-const features = [
-  {
-    icon: Heart,
-    title: 'HealthKit Integration',
-    description: 'Seamless connection with Apple Health. Automatically import heart rate, HRV, sleep, and more.'
-  },
-  {
-    icon: Brain,
-    title: 'AI Analysis',
-    description: 'Our intelligent AI recognizes patterns and connections in your health data that you might miss.'
-  },
-  {
-    icon: Activity,
-    title: 'Stress Tracking',
-    description: 'Understand your stress levels through HRV analysis and receive personalized relaxation tips.'
-  },
-  {
-    icon: Moon,
-    title: 'Sleep Analysis',
-    description: 'Detailed insights into your sleep quality with personalized improvement suggestions.'
-  },
-  {
-    icon: Users,
-    title: 'Community',
-    description: 'Join challenges, compare with friends, and motivate each other on your health journey.'
-  },
-  {
-    icon: Watch,
-    title: 'Apple Watch App',
-    description: 'Companion app for your Apple Watch with live complications and quick access to insights.'
-  },
-  {
-    icon: LayoutGrid,
-    title: 'Home Screen Widgets',
-    description: 'See your most important health data directly on your home screen at a glance.'
-  },
-  {
-    icon: Zap,
-    title: 'Live Activities',
-    description: 'Real-time updates on your lock screen during workouts and meditation sessions.'
-  },
-  {
-    icon: TrendingUp,
-    title: 'Trend Analysis',
-    description: 'Track your long-term progress with clear charts and comprehensive reports.'
-  }
-]
 </script>
