@@ -1,60 +1,70 @@
 <template>
-  <section id="preview" class="relative py-32 lg:py-40 bg-cream overflow-hidden">
+  <section id="preview" class="relative py-28 lg:py-36 bg-light overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 mesh-gradient pointer-events-none opacity-40" />
+
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <!-- Content -->
         <div class="order-2 lg:order-1">
-          <span class="label text-primary mb-4 block reveal">App Preview</span>
-
-          <h2 class="display-large text-dark mb-6 reveal">
-            Discover<br />
-            <span class="gradient-text">Metea</span>
-          </h2>
-
-          <p class="body-large mb-12 reveal">
-            A clear dashboard shows you all your important health data at a glance.
-          </p>
+          <div class="section-header">
+            <span class="section-anim label text-primary mb-4 block">App Preview</span>
+            <h2 class="section-anim display-large text-dark mb-6">
+              Discover<br />
+              <span class="gradient-text">Metea</span>
+            </h2>
+            <p class="section-anim body-large mb-10">
+              A clear dashboard shows you all your important health data at a glance.
+            </p>
+          </div>
 
           <!-- Feature Highlights -->
-          <div class="space-y-4 stagger-children">
+          <div class="space-y-3">
             <div
               v-for="(highlight, index) in highlights"
               :key="index"
-              class="flex items-start gap-5 p-5 rounded-2xl transition-all duration-500 cursor-pointer reveal"
-              :class="activeHighlight === index ? 'card' : 'hover:bg-white/50'"
+              class="feature-card group flex items-start gap-4 p-4 rounded-2xl transition-all duration-500 cursor-pointer"
+              :class="activeHighlight === index
+                ? 'bg-white border border-primary/20 shadow-sm shadow-primary/5'
+                : 'hover:bg-white/60 border border-transparent'"
               @click="activeHighlight = index"
             >
               <div
-                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500"
-                :class="activeHighlight === index ? 'bg-dark' : 'bg-gray'"
+                class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500"
+                :class="activeHighlight === index ? 'bg-primary glow-green' : 'bg-gray-light'"
               >
                 <component
                   :is="highlight.icon"
-                  class="w-6 h-6"
+                  class="w-5 h-5 transition-colors duration-500"
                   :class="activeHighlight === index ? 'text-white' : 'text-dark-muted'"
+                  :stroke-width="1.5"
                 />
               </div>
               <div>
-                <h4 class="font-semibold text-dark mb-1" style="font-family: var(--font-display);">{{ highlight.title }}</h4>
-                <p class="text-sm text-dark-muted leading-relaxed">{{ highlight.description }}</p>
+                <h4 class="font-semibold text-dark mb-0.5 text-[0.95rem]" style="font-family: var(--font-display);">
+                  {{ highlight.title }}
+                </h4>
+                <p class="text-sm text-dark-muted leading-relaxed">
+                  {{ highlight.description }}
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Phone Preview -->
-        <div class="order-1 lg:order-2 flex justify-center reveal">
-          <div class="float">
-            <div class="phone-mockup w-[280px] sm:w-[320px]">
+        <!-- Phone Preview with 3D Effect -->
+        <div class="order-1 lg:order-2 flex justify-center preview-phone" ref="previewContainer">
+          <div class="relative">
+            <div ref="previewPhoneRef" class="phone-mockup w-[260px] sm:w-[300px] glow-green-strong" style="will-change: transform;">
               <div class="phone-screen aspect-[9/19.5] overflow-hidden relative">
                 <!-- Screenshots with transition -->
                 <Transition
-                  enter-active-class="transition-opacity duration-500"
-                  enter-from-class="opacity-0"
-                  enter-to-class="opacity-100"
-                  leave-active-class="transition-opacity duration-500"
-                  leave-from-class="opacity-100"
-                  leave-to-class="opacity-0"
+                  enter-active-class="transition-all duration-500 ease-out"
+                  enter-from-class="opacity-0 scale-105"
+                  enter-to-class="opacity-100 scale-100"
+                  leave-active-class="transition-all duration-300 ease-in"
+                  leave-from-class="opacity-100 scale-100"
+                  leave-to-class="opacity-0 scale-95"
                   mode="out-in"
                 >
                   <img
@@ -66,6 +76,17 @@
                 </Transition>
               </div>
             </div>
+
+            <!-- Screenshot indicator dots -->
+            <div class="flex justify-center gap-2 mt-6">
+              <button
+                v-for="(_, index) in screenshots"
+                :key="index"
+                @click="activeHighlight = index"
+                class="w-2 h-2 rounded-full transition-all duration-500"
+                :class="activeHighlight === index ? 'bg-primary w-6' : 'bg-gray hover:bg-dark-muted'"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -76,7 +97,31 @@
 <script setup lang="ts">
 import { BarChart3, Sparkles, Bell, Shield } from 'lucide-vue-next'
 
+const previewPhoneRef = ref<HTMLElement | null>(null)
 const activeHighlight = ref(0)
+
+useTilt(previewPhoneRef, 5)
+
+// Auto-cycle through highlights
+let interval: ReturnType<typeof setInterval> | null = null
+
+onMounted(() => {
+  interval = setInterval(() => {
+    activeHighlight.value = (activeHighlight.value + 1) % highlights.length
+  }, 4000)
+})
+
+onUnmounted(() => {
+  if (interval) clearInterval(interval)
+})
+
+// Reset interval on manual click
+watch(activeHighlight, () => {
+  if (interval) clearInterval(interval)
+  interval = setInterval(() => {
+    activeHighlight.value = (activeHighlight.value + 1) % highlights.length
+  }, 4000)
+})
 
 const highlights = [
   {
@@ -107,5 +152,4 @@ const screenshots = [
   { title: 'Notifications', image: '/screenshot-2.jpg' },
   { title: 'Privacy', image: '/screenshot-1.jpg' }
 ]
-
 </script>

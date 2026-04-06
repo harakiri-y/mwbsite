@@ -1,1 +1,0 @@
-export { default } from "file:///Users/yaman/Desktop/Metea%20Website/node_modules/@nuxt/vite-builder/dist/vite-node-entry.mjs"

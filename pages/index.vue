@@ -8,12 +8,13 @@
     <StatsSection />
     <DownloadSection />
     <FooterSection />
+    <CookieBanner />
   </div>
 </template>
 
 <script setup lang="ts">
-// Initialize scroll reveal animations
-useScrollReveal()
+// Initialize GSAP-powered animations
+useGsapAnimations()
 
 useHead({
   title: 'Metea - Your Health. Intelligently Analyzed.',
