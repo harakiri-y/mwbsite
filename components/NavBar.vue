@@ -16,7 +16,12 @@
           <a href="/#features" class="text-sm text-dark-muted hover:text-dark transition-colors duration-300">Features</a>
           <a href="/#how" class="text-sm text-dark-muted hover:text-dark transition-colors duration-300">How It Works</a>
           <a href="/#preview" class="text-sm text-dark-muted hover:text-dark transition-colors duration-300">App Preview</a>
-          <a href="/#cta" class="btn-primary text-sm py-2.5 px-5">
+          <a
+            href="https://apps.apple.com/app/metea/id6756438562"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary text-sm py-2.5 px-5"
+          >
             <span>Download</span>
           </a>
         </div>
@@ -47,7 +52,13 @@
             <a href="/#how" @click="mobileMenuOpen = false" class="text-dark-muted hover:text-dark hover:bg-dark/5 transition-all duration-300 py-2.5 px-3 rounded-xl text-sm">How It Works</a>
             <a href="/#preview" @click="mobileMenuOpen = false" class="text-dark-muted hover:text-dark hover:bg-dark/5 transition-all duration-300 py-2.5 px-3 rounded-xl text-sm">App Preview</a>
             <div class="pt-3">
-              <a href="/#cta" @click="mobileMenuOpen = false" class="btn-primary w-full justify-center text-sm">
+              <a
+                href="https://apps.apple.com/app/metea/id6756438562"
+                target="_blank"
+                rel="noopener noreferrer"
+                @click="mobileMenuOpen = false"
+                class="btn-primary w-full justify-center text-sm"
+              >
                 <span>Download</span>
               </a>
             </div>

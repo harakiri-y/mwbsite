@@ -16,7 +16,12 @@
         <a href="/#preview">App</a>
         <a href="/#stats">Evidence</a>
       </div>
-      <a href="/#cta" class="nav-cta"><span class="dot" aria-hidden="true" />Download Free</a>
+      <a
+        href="https://apps.apple.com/app/metea/id6756438562"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-cta"
+      ><span class="dot" aria-hidden="true"></span>Download Free</a>
     </nav>
 
     <header class="metea-legal-hero">
