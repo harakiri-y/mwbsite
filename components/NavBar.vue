@@ -14,9 +14,9 @@
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-8">
           <a href="/#features" class="text-sm text-dark-muted hover:text-dark transition-colors duration-300">Features</a>
-          <a href="/#how-it-works" class="text-sm text-dark-muted hover:text-dark transition-colors duration-300">How It Works</a>
+          <a href="/#how" class="text-sm text-dark-muted hover:text-dark transition-colors duration-300">How It Works</a>
           <a href="/#preview" class="text-sm text-dark-muted hover:text-dark transition-colors duration-300">App Preview</a>
-          <a href="/#download" class="btn-primary text-sm py-2.5 px-5">
+          <a href="/#cta" class="btn-primary text-sm py-2.5 px-5">
             <span>Download</span>
           </a>
         </div>
@@ -44,10 +44,10 @@
         <div v-if="mobileMenuOpen" class="md:hidden glass rounded-2xl mt-3 p-5 shadow-lg">
           <div class="flex flex-col space-y-1">
             <a href="/#features" @click="mobileMenuOpen = false" class="text-dark-muted hover:text-dark hover:bg-dark/5 transition-all duration-300 py-2.5 px-3 rounded-xl text-sm">Features</a>
-            <a href="/#how-it-works" @click="mobileMenuOpen = false" class="text-dark-muted hover:text-dark hover:bg-dark/5 transition-all duration-300 py-2.5 px-3 rounded-xl text-sm">How It Works</a>
+            <a href="/#how" @click="mobileMenuOpen = false" class="text-dark-muted hover:text-dark hover:bg-dark/5 transition-all duration-300 py-2.5 px-3 rounded-xl text-sm">How It Works</a>
             <a href="/#preview" @click="mobileMenuOpen = false" class="text-dark-muted hover:text-dark hover:bg-dark/5 transition-all duration-300 py-2.5 px-3 rounded-xl text-sm">App Preview</a>
             <div class="pt-3">
-              <a href="/#download" @click="mobileMenuOpen = false" class="btn-primary w-full justify-center text-sm">
+              <a href="/#cta" @click="mobileMenuOpen = false" class="btn-primary w-full justify-center text-sm">
                 <span>Download</span>
               </a>
             </div>

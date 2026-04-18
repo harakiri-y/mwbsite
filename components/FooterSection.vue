@@ -31,9 +31,9 @@
           <h4 class="font-semibold text-sm mb-5" style="font-family: var(--font-display);">Product</h4>
           <ul class="space-y-2.5">
             <li><a href="/#features" class="text-white/40 hover:text-white text-sm transition-colors duration-300">Features</a></li>
-            <li><a href="/#how-it-works" class="text-white/40 hover:text-white text-sm transition-colors duration-300">How It Works</a></li>
+            <li><a href="/#how" class="text-white/40 hover:text-white text-sm transition-colors duration-300">How It Works</a></li>
             <li><a href="/#preview" class="text-white/40 hover:text-white text-sm transition-colors duration-300">App Preview</a></li>
-            <li><a href="/#download" class="text-white/40 hover:text-white text-sm transition-colors duration-300">Download</a></li>
+            <li><a href="/#cta" class="text-white/40 hover:text-white text-sm transition-colors duration-300">Download</a></li>
           </ul>
         </div>
 
