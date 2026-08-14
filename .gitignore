@@ -24,3 +24,10 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Abgeloeste Komponenten und Assets. Bleiben lokal als Nachschlagewerk;
+# die Originale stehen ohnehin in der Git-Historie.
+.legacy/
+
+# Persoenliche Claude-Code-Einstellungen (launch.json bleibt versioniert)
+.claude/settings.local.json

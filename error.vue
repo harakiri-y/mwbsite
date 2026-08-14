@@ -1,28 +1,12 @@
 <template>
-  <div class="min-h-screen bg-light flex items-center justify-center px-4">
-    <div class="text-center max-w-lg">
-      <!-- Error Code -->
-      <h1 class="display-huge gradient-text mb-4">{{ error?.statusCode || '500' }}</h1>
-
-      <!-- Message -->
-      <h2 class="display-small text-dark mb-4">
-        {{ error?.statusCode === 404 ? 'Page not found' : 'Something went wrong' }}
-      </h2>
-      <p class="text-dark-muted mb-8 leading-relaxed">
-        {{ error?.statusCode === 404
-          ? "Sorry, we couldn't find the page you're looking for."
-          : "An unexpected error occurred. Please try again later."
-        }}
-      </p>
-
-      <!-- Actions -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button @click="handleError" class="btn-primary">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-          </svg>
-          <span>Back to Home</span>
-        </button>
+  <div class="err">
+    <div class="err-inner">
+      <p class="err-code">{{ error?.statusCode || 500 }}</p>
+      <h1 class="d-l err-title">{{ heading }}</h1>
+      <p class="lead err-lead">{{ body }}</p>
+      <div class="err-actions">
+        <button class="btn btn-primary" @click="handleError">Go to the home page</button>
+        <a href="mailto:support@metea-app.com" class="btn btn-ghost">Email support</a>
       </div>
     </div>
   </div>
@@ -36,10 +20,28 @@ const props = defineProps<{
   }
 }>()
 
+const isNotFound = computed(() => props.error?.statusCode === 404)
+
+const heading = computed(() =>
+  isNotFound.value ? 'This page is not here.' : 'Something broke on our end.'
+)
+
+const body = computed(() =>
+  isNotFound.value
+    ? 'The link may be old, or the address slightly off. The home page still works.'
+    : 'The page failed to load. Reloading usually fixes it. If it keeps happening, send us the address you were trying to open.'
+)
+
 useHead({
   title: `${props.error?.statusCode || 'Error'} | Metea`,
-  meta: [
-    { name: 'robots', content: 'noindex' }
+  meta: [{ name: 'robots', content: 'noindex' }],
+  link: [
+    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap'
+    }
   ]
 })
 
@@ -49,60 +51,104 @@ function handleError() {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap');
-
+/* error.vue rendert außerhalb des App-Layouts: Tokens hier eigenständig. */
 :root {
-  --color-primary: #1A7F5A;
-  --color-dark: #0a0a0a;
-  --color-dark-muted: #4a4a4a;
-  --color-light: #fafafa;
-  --color-gray: #e5e5e5;
-  --font-display: 'Syne', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  color-scheme: dark;
 }
 
 body {
-  font-family: var(--font-body);
-  background: var(--color-light);
+  margin: 0;
+  background: #0b0d0c;
+  color: oklch(0.92 0.012 85);
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.display-huge {
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 15vw, 12rem);
-  font-weight: 800;
-  line-height: 0.9;
+.err {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 80px clamp(20px, 4vw, 32px);
+  background:
+    radial-gradient(ellipse 60% 60% at 50% 0%, oklch(0.716 0.09 182 / 0.12), transparent 70%),
+    #0b0d0c;
 }
 
-.display-small {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+.err-inner {
+  max-width: 46ch;
+  text-align: center;
+}
+
+.err-code {
+  margin: 0 0 20px;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  color: oklch(0.716 0.09 182);
+  font-variant-numeric: tabular-nums;
+}
+
+.err-title {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: oklch(0.961 0.003 106);
+  text-wrap: balance;
+}
+
+.err-lead {
+  margin: 20px auto 32px;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: oklch(0.688 0.013 175);
+}
+
+.err-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.err .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: background 200ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms;
+}
+
+.err .btn-primary {
+  background: oklch(0.828 0.061 167);
+  color: #0b0d0c;
   font-weight: 600;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #2D9B6E 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.err .btn-primary:hover {
+  background: oklch(0.88 0.07 167);
 }
 
-.text-dark { color: var(--color-dark); }
-.text-dark-muted { color: var(--color-dark-muted); }
-.bg-light { background: var(--color-light); }
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  background: var(--color-dark);
-  color: white;
-  font-weight: 500;
-  border-radius: 100px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+.err .btn-ghost {
+  border-color: oklch(0.303 0.02 186);
+  color: oklch(0.92 0.012 85);
 }
 
-.btn-primary:hover {
-  background: var(--color-primary);
+.err .btn-ghost:hover {
+  background: oklch(0.225 0.015 181);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .err * {
+    transition-duration: 0.01ms !important;
+  }
 }
 </style>

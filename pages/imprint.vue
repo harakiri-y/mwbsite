@@ -2,10 +2,8 @@
   <LegalPageShell
     title="Imprint"
     subtitle="Legal notice"
-    eyebrow-section="§ 12"
-    eyebrow-label="Legal"
   >
-    <article class="metea-legal-doc">
+    <article class="legal-doc">
       <section>
         <h2>About Metea</h2>
         <p>
@@ -18,7 +16,7 @@
         <p>
           For questions, support, or inquiries, please contact us through the App Store:
         </p>
-        <div class="metea-legal-callout">
+        <div class="legal-callout">
           <p>
             <strong>App Support:</strong> Use the "App Support" link on the Metea App Store page<br />
             <strong>Report a Problem:</strong> Use the "Report a Problem" feature in the App Store

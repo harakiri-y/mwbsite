@@ -2,20 +2,21 @@
   <LegalPageShell
     title="Privacy Policy"
     :subtitle="`Last updated: ${lastUpdated}`"
-    eyebrow-section="§ 10"
-    eyebrow-label="Privacy"
   >
-    <article class="metea-legal-doc">
+    <article class="legal-doc">
           <!-- Introduction -->
           <section>
             <h2>1. Introduction and Overview</h2>
             <p>
               Metea ("we," "us," or "our") is committed to protecting your privacy and ensuring the security of your personal health data. This Privacy Policy explains how we handle information when you use the Metea mobile application (the "App").
             </p>
-            <div class="metea-legal-callout metea-legal-callout--accent">
+            <div class="legal-callout legal-callout--accent">
               <p><strong>Key Privacy Principle:</strong></p>
               <p>
-                <strong>Your health data stays with you.</strong> All personal health information is stored on your iPhone and in your personal iCloud account (end-to-end encrypted by Apple). We do not collect, process, store, or have access to your personal health data on our servers. Only you can access your data.
+                <strong>Your raw health data stays on your device.</strong> All personal health information is stored on your iPhone and in your personal iCloud account (end-to-end encrypted by Apple). We operate no servers that store your HealthKit data, and we cannot read your iCloud record.
+              </p>
+              <p>
+                <strong>One exception, stated plainly:</strong> to write your daily briefing and answer your questions in the coach, a reduced summary of recent metrics is sent to OpenAI, our processor for text generation. It contains aggregated values such as "average resting heart rate 65 bpm, typical range 58 to 72", never raw HealthKit samples, and it carries no name, email, or Apple ID. Section 4 describes this in full.
               </p>
             </div>
           </section>
@@ -26,7 +27,7 @@
             <p>
               The data controller responsible for this App is the developer of Metea. For any inquiries, please contact us through the App Store.
             </p>
-            <div class="metea-legal-callout">
+            <div class="legal-callout">
               <p>
                 <strong>Contact:</strong> Via the App Store "App Support" link on the Metea app page
               </p>
@@ -66,9 +67,12 @@
               <li>Provides automatic backup to prevent data loss</li>
             </ul>
 
-            <h3>3.3 No Server-Side Processing of Personal Health Data</h3>
+            <h3>3.3 No Metea Servers Hold Your Health Data</h3>
             <p>
-              <strong>We do not operate servers that store or process your personal health data.</strong> All AI analysis and insights are generated on your device using Apple's Core ML framework or are processed anonymously as described in Section 4. Your Personal Health Twin—the AI model that learns your individual health patterns—exists only on your device and is never transmitted to our servers.
+              <strong>We operate no servers that store your personal health data.</strong> Your raw HealthKit records, your local database, and your Personal Health Twin (the model of your individual patterns) exist on your device and in your own iCloud account only. They are never transmitted to us.
+            </p>
+            <p>
+              Text generation is the one part that leaves the device, and it goes to OpenAI rather than to a Metea server. What is sent, and what is not, is set out in Section 4.2.
             </p>
           </section>
 
@@ -76,9 +80,9 @@
           <section>
             <h2>4. AI Analysis and Anonymization</h2>
 
-            <h3>4.1 On-Device AI Processing</h3>
+            <h3>4.1 On-Device Processing</h3>
             <p>
-              The primary AI analysis in Metea occurs entirely on your device using Apple's Core ML framework. Our machine learning models are embedded within the App and process your health data locally without any data transmission to external servers. This includes:
+              The measurement and pattern analysis in Metea runs entirely on your device using Apple's Core ML framework. These models are embedded in the App and read your health data locally, with no transmission to any server. This includes:
             </p>
             <ul>
               <li><strong>Personal Health Twin:</strong> An AI model that learns your individual health patterns. This model is created and stored exclusively on your device and is never transmitted anywhere.</li>
@@ -87,16 +91,28 @@
               <li><strong>Trend Detection:</strong> Pattern recognition across your health metrics over time</li>
             </ul>
 
-            <h3>4.2 Privacy-Safe AI Prompts</h3>
+            <h3>4.2 Text Generation by OpenAI</h3>
             <p>
-              When generating personalized insights, our AI system uses privacy-safe prompts that contain only aggregated metrics and derived patterns. <strong>Raw HealthKit samples are never transmitted.</strong> For example, instead of sending your individual heart rate readings, the system might use aggregated information like "average resting heart rate: 65 BPM, typical range: 58-72 BPM."
+              The written briefing and the coach replies are produced by a large language model operated by <strong>OpenAI, L.L.C.</strong> (United States), acting as our processor under Art. 28 GDPR. This is the only processing step that leaves your device.
+            </p>
+            <p>
+              <strong>What is sent:</strong> a compact set of aggregated values and derived patterns, for example "average resting heart rate 65 bpm, typical range 58 to 72", "sleep efficiency 91 percent", "HRV 14 percent below your 30-day baseline". <strong>Raw HealthKit samples are never transmitted.</strong> The request carries no name, no email address, and no Apple ID.
+            </p>
+            <p>
+              <strong>Retention and training:</strong> under our agreement with OpenAI, this data is not used to train their models. OpenAI retains API requests for a limited period for abuse monitoring and then deletes them.
+            </p>
+            <p>
+              <strong>Transfer to a third country:</strong> processing takes place in the United States. The transfer is covered by the EU Standard Contractual Clauses and OpenAI's certification under the EU-U.S. Data Privacy Framework.
+            </p>
+            <p>
+              <strong>Legal basis:</strong> because these values are derived from health data, we rely on your explicit consent under Art. 9(2)(a) GDPR, given when you enable the briefing. Withdrawing it in the App settings stops all transmission; the on-device analysis in Section 4.1 continues to work without it.
             </p>
 
             <h3>4.3 Anonymous Data Aggregation (Optional)</h3>
             <p>
               If you opt in to anonymous data sharing in the App settings, aggregated and fully anonymized data may be used to improve our algorithms. Our anonymization process includes:
             </p>
-            <div class="metea-legal-callout metea-legal-callout--accent">
+            <div class="legal-callout legal-callout--accent">
               <ul>
                 <li><strong>User ID Hashing:</strong> Your identifier is cryptographically hashed and cannot be reversed</li>
                 <li><strong>Location Generalization:</strong> GPS coordinates are rounded to a 5km grid, making precise location identification impossible</li>
@@ -263,9 +279,10 @@
               <li><strong>Apple HealthKit:</strong> For health data access (governed by Apple's Privacy Policy)</li>
               <li><strong>Apple iCloud:</strong> For secure data storage and synchronization (governed by Apple's Privacy Policy)</li>
               <li><strong>Apple App Store:</strong> For app distribution and in-app purchases</li>
+              <li><strong>OpenAI, L.L.C. (United States):</strong> Generates the text of your daily briefing and the coach replies. Receives aggregated metrics only, never raw HealthKit samples and no identifying details. See Section 4.2 for the full description, including retention, transfer safeguards, and how to withdraw consent.</li>
             </ul>
             <p>
-              We do not share your health data with any third parties for advertising, marketing, or any other purposes.
+              We do not sell your health data, and we do not share it with anyone for advertising or marketing. OpenAI acts strictly as our processor on our instructions.
             </p>
           </section>
 
@@ -291,7 +308,7 @@
             <p>
               If you have questions about this Privacy Policy or our data practices, please contact us through the App Store:
             </p>
-            <div class="metea-legal-callout">
+            <div class="legal-callout">
               <p>
                 <strong>App Support:</strong> Use the "App Support" link on the Metea App Store page<br />
                 <strong>Report a Problem:</strong> Use the "Report a Problem" feature in the App Store
@@ -301,9 +318,9 @@
 
           <!-- Summary Box -->
           <section>
-            <div class="metea-legal-callout metea-legal-callout--accent">
+            <div class="legal-callout legal-callout--accent">
               <h2>Privacy Summary</h2>
-              <div class="metea-legal-summary-grid">
+              <div class="legal-summary-grid">
                 <div>
                   <h4>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -311,10 +328,11 @@
                     </svg>
                     What We DO
                   </h4>
-                  <ul class="metea-legal-summary-list">
-                    <li>Store health data on your iPhone & iCloud</li>
+                  <ul class="legal-summary-list">
+                    <li>Store health data on your iPhone &amp; iCloud</li>
                     <li>Use Apple's end-to-end encryption</li>
-                    <li>Process AI insights on-device via Core ML</li>
+                    <li>Analyse your measurements on-device via Core ML</li>
+                    <li>Send aggregated values to OpenAI to write your briefing (Section 4.2)</li>
                     <li>Keep your Personal Health Twin local-only</li>
                     <li>Give you granular control over data sharing</li>
                     <li>Anonymize any optionally shared data</li>
@@ -328,13 +346,14 @@
                     </svg>
                     What We DON'T Do
                   </h4>
-                  <ul class="metea-legal-summary-list">
+                  <ul class="legal-summary-list">
                     <li>Store your health data on our servers</li>
                     <li>Transmit raw HealthKit samples</li>
+                    <li>Send your name, email, or Apple ID with a briefing request</li>
+                    <li>Let anyone train models on your data</li>
                     <li>Sell or share identifiable data</li>
                     <li>Use data for advertising or marketing</li>
                     <li>Track you across apps or websites</li>
-                    <li>Access your data without your permission</li>
                     <li>Share your Personal Health Twin externally</li>
                   </ul>
                 </div>
@@ -346,12 +365,12 @@
 </template>
 
 <script setup lang="ts">
-const lastUpdated = 'January 28, 2026'
+const lastUpdated = 'August 14, 2026'
 
 useHead({
   title: 'Privacy Policy - Metea',
   meta: [
-    { name: 'description', content: 'Metea Privacy Policy - Learn how we protect your health data with on-device storage, iCloud encryption, and anonymous AI analysis.' }
+    { name: 'description', content: 'How Metea handles your health data: raw HealthKit records stay on your device, aggregated values go to OpenAI to write your briefing, nothing is sold or used for advertising.' }
   ]
 })
 </script>

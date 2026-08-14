@@ -1,26 +1,15 @@
 <template>
-  <div class="min-h-screen bg-light flex items-center justify-center px-4">
-    <div class="text-center max-w-lg">
-      <!-- 404 Number -->
-      <h1 class="display-huge gradient-text mb-4">404</h1>
-
-      <!-- Message -->
-      <h2 class="display-small text-dark mb-4">Page not found</h2>
-      <p class="text-dark-muted mb-8 leading-relaxed">
-        Sorry, we couldn't find the page you're looking for. It might have been moved or doesn't exist.
+  <div class="nf">
+    <div class="nf-inner">
+      <p class="nf-code">404</p>
+      <h1 class="d-l nf-title">This page is not here.</h1>
+      <p class="lead nf-lead">
+        The link may be old, or the address slightly off. The home page and the
+        support page below both still work.
       </p>
-
-      <!-- Actions -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <NuxtLink to="/" class="btn-primary">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-          </svg>
-          <span>Back to Home</span>
-        </NuxtLink>
-        <a href="mailto:support@metea-app.com" class="btn-secondary">
-          <span>Contact Support</span>
-        </a>
+      <div class="nf-actions">
+        <NuxtLink to="/" class="btn btn-primary">Go to the home page</NuxtLink>
+        <NuxtLink to="/support" class="btn btn-ghost">Open support</NuxtLink>
       </div>
     </div>
   </div>
@@ -28,9 +17,47 @@
 
 <script setup lang="ts">
 useHead({
-  title: '404 - Page Not Found | Metea',
-  meta: [
-    { name: 'robots', content: 'noindex' }
-  ]
+  title: 'Page not found | Metea',
+  meta: [{ name: 'robots', content: 'noindex' }]
 })
 </script>
+
+<style scoped>
+.nf {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 80px var(--gutter);
+  background:
+    radial-gradient(ellipse 60% 60% at 50% 0%, oklch(0.716 0.09 182 / 0.12), transparent 70%),
+    var(--bg);
+}
+
+.nf-inner {
+  max-width: 46ch;
+  text-align: center;
+}
+
+.nf-code {
+  margin: 0 0 20px;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  color: var(--teal);
+  font-variant-numeric: tabular-nums;
+}
+
+.nf-title {
+  margin: 0;
+}
+
+.nf-lead {
+  margin: 20px auto 32px;
+}
+
+.nf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+</style>

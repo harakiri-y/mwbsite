@@ -2,10 +2,8 @@
   <LegalPageShell
     title="Terms of Service"
     :subtitle="`Last updated: ${lastUpdated}`"
-    eyebrow-section="§ 11"
-    eyebrow-label="Terms"
   >
-    <article class="metea-legal-doc">
+    <article class="legal-doc">
       <section>
         <h2>1. Acceptance of Terms</h2>
         <p>
@@ -28,7 +26,7 @@
 
       <section>
         <h2>3. Medical Disclaimer</h2>
-        <div class="metea-legal-callout metea-legal-callout--warn">
+        <div class="legal-callout legal-callout--warn">
           <p>
             <strong>IMPORTANT:</strong> Metea is NOT a medical device and is NOT intended to diagnose, treat, cure, or prevent any disease or health condition. The App provides general wellness information and insights only. Always consult a qualified healthcare professional before making any health-related decisions. Do not disregard professional medical advice or delay seeking treatment because of information provided by this App.
           </p>
@@ -127,7 +125,7 @@
 
       <section>
         <h2>15. Contact Information</h2>
-        <div class="metea-legal-callout">
+        <div class="legal-callout">
           <p>
             For questions about these Terms, please contact us through the App Store:<br /><br />
             <strong>App Support:</strong> Use the "App Support" link on the Metea App Store page<br />

@@ -1,11 +1,11 @@
 {
-  "name": "Metea - Your Health. Intelligently Analyzed.",
+  "name": "Metea: your Apple Health data, in one sentence a day",
   "short_name": "Metea",
-  "description": "Connect Apple Health with AI power. Get personalized insights for stress, sleep, and well-being.",
+  "description": "Metea reads your Apple Health data and writes you one short briefing each morning: what changed, why, and what to do about it today.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fafafa",
-  "theme_color": "#1A7F5A",
+  "background_color": "#0B0D0C",
+  "theme_color": "#0B0D0C",
   "icons": [
     {
       "src": "/favicon-16x16.png",
@@ -25,12 +25,14 @@
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

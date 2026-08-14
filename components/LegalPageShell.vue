@@ -1,53 +1,42 @@
 <template>
-  <div class="metea-legal-page">
-    <nav
-      id="meteaLegalNav"
-      class="metea-landing-nav"
-      :class="{ scrolled: navScrolled }"
-      aria-label="Primary"
-    >
-      <NuxtLink to="/" class="logo">
-        <span class="logo-mark"><img src="/logo.png" alt="Metea" /></span>
-        <span>Metea</span>
-      </NuxtLink>
-      <div class="nav-links">
-        <a href="/#features">Features</a>
-        <a href="/#how">How it works</a>
-        <a href="/#preview">App</a>
-        <a href="/#stats">Evidence</a>
+  <div class="legal-page">
+    <a href="#legal-main" class="skip-link">Skip to content</a>
+
+    <nav class="nav" :class="{ scrolled: navScrolled }" aria-label="Primary">
+      <div class="nav-inner">
+        <NuxtLink to="/" class="brand">
+          <img src="/logo.png" alt="" width="30" height="30" />
+          <span>Metea</span>
+        </NuxtLink>
+
+        <div class="nav-links">
+          <a href="/#how">How it reads</a>
+          <a href="/#agents">Agents</a>
+          <a href="/#app">Inside</a>
+          <a href="/#privacy">Privacy</a>
+        </div>
+
+        <a
+          href="https://apps.apple.com/app/metea/id6756438562"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary nav-cta"
+        >Get Metea</a>
       </div>
-      <a
-        href="https://apps.apple.com/app/metea/id6756438562"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="nav-cta"
-      ><span class="dot" aria-hidden="true"></span>Download Free</a>
     </nav>
 
-    <header class="metea-legal-hero">
-      <div class="metea-legal-hero-bg" aria-hidden="true">
-        <div class="blob a" />
-        <div class="blob b" />
-        <div class="blob c" />
-        <div class="metea-legal-grain" />
-      </div>
-      <div class="metea-wrap metea-legal-hero-inner">
-        <NuxtLink to="/" class="metea-legal-back">
-          <span class="metea-legal-back-ic" aria-hidden="true">←</span>
-          Back to Home
+    <header class="legal-hero">
+      <div class="wrap legal-hero-inner">
+        <NuxtLink to="/" class="legal-back">
+          <span aria-hidden="true">←</span> Back to home
         </NuxtLink>
-        <div v-if="eyebrowSection || eyebrowLabel" class="metea-manifesto-label">
-          <span v-if="eyebrowSection" class="idx">{{ eyebrowSection }}</span>
-          <span class="line" />
-          <span v-if="eyebrowLabel" class="ttl">{{ eyebrowLabel }}</span>
-        </div>
-        <h1 class="metea-legal-title">{{ title }}</h1>
-        <p v-if="subtitle" class="metea-legal-lead">{{ subtitle }}</p>
+        <h1 class="legal-title">{{ title }}</h1>
+        <p v-if="subtitle" class="legal-lead">{{ subtitle }}</p>
       </div>
     </header>
 
-    <main class="metea-legal-main">
-      <div class="metea-wrap">
+    <main id="legal-main" class="legal-main">
+      <div class="wrap">
         <slot />
       </div>
     </main>
@@ -61,20 +50,14 @@ withDefaults(
   defineProps<{
     title: string
     subtitle?: string
-    eyebrowSection?: string
-    eyebrowLabel?: string
   }>(),
-  {
-    subtitle: '',
-    eyebrowSection: '',
-    eyebrowLabel: ''
-  }
+  { subtitle: '' }
 )
 
 const navScrolled = ref(false)
 
 function onScroll() {
-  navScrolled.value = window.scrollY > 50
+  navScrolled.value = window.scrollY > 24
 }
 
 onMounted(() => {
@@ -86,3 +69,77 @@ onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
 })
 </script>
+
+<style scoped>
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-sticky);
+  transition: background var(--t-move) var(--ease), border-color var(--t-move) var(--ease);
+  border-bottom: 1px solid transparent;
+}
+
+.nav.scrolled {
+  background: oklch(0.156 0.004 165 / 0.78);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border-bottom-color: var(--line-soft);
+}
+
+.nav-inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: 16px var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.brand img {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  object-fit: cover;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  margin-inline: auto;
+}
+
+.nav-links a {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  transition: color var(--t-state) var(--ease);
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+.nav-cta {
+  padding: 11px 20px;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-cta {
+    margin-inline-start: auto;
+  }
+}
+</style>
